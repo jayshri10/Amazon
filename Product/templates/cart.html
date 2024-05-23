@@ -1,0 +1,72 @@
+{%include "navbar.html"%}
+
+{%block content%}
+{% load cart %}
+{% load custome_filter %}
+<div class="container my-4">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Sr.no</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for product in products%}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><img src="{{product.img.url}}" width="100px" height="100px" class="card-img-top" alt="..."></td>
+            <td>{{product.product}}</td>
+            <td>{{product.price|currency}}</td>
+            <td>{{ product|cart_quantity:request.session.cart}}</td>
+            <td>{{ product|price_total:request.session.cart|currency}}</td>
+        </tr>
+        {% endfor %}
+        <tfoot>
+        <th colspan="4"></th>
+        <th colspan="1">Total Price</th>
+        <td>{{ products|total_cart_price:request.session.cart|currency}}</td>
+        </tfoot>
+        </tbody>
+    </table>
+    <div class="m-3 p-3">
+        <a href="#" class="btn btn-outline-info border rounded col-lg-3
+        float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">Check out</a>
+    </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Check-Out Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Address</label>
+                        <TEXTAREA type="text" class="form-control" name="address" id="exampleInputEmail1"
+                                  aria-describedby="emailHelp"></TEXTAREA>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mobile No</label>
+                        <input type="number" class="form-control" name="mobileNo" id="exampleInputPassword1">
+                    </div>
+                    <input type="submit" value="Check Out" class="btn col-lg-6 btn-block btn-outline-info float-right">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

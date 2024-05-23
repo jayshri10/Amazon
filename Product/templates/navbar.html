@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <title>Ecom</title>
+    <style>
+        .contact-info {
+              padding: 10px;
+              text-align: right;
+          }
+          .contact-info a {
+              color: black;
+              margin-right: 10px;
+              text-decoration: none;
+          }
+          .contact-info a:hover {
+              text-decoration: underline;
+          }
+         /* Basic styling for the navbar */
+          .navbar {
+            padding: 1px;
+          }
+
+          /* Style for the dropdown menu */
+          .dropdown:hover{
+            position: relative;
+            display: inline-block;
+            color:blue;
+          }
+
+          /* Style for the dropdown content */
+          .dropdown-content {
+            display: none;
+            position: absolute;
+
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+          }
+
+          /* Style for the dropdown links */
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+
+          /* Show the dropdown menu on hover */
+          .dropdown:hover .dropdown-content {
+            display: block;
+          }
+
+    </style>
+</head>
+<body>
+<div class="container mt-1">
+    <!-- Contact Info Section -->
+    <div class="contact-info ">
+        {% if not request.session.name %}
+        <a href="register/">Register</a>
+        <a href="login/">Log in</a>
+        {% endif%}
+        <a href="">Orders (0)</a>
+        <a href="cart/">Shopping cart (0)</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mt-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+        <div class="container-fluid p-5">
+            <!-- Navbar Brand -->
+            <a class="navbar-brand" href="#">E-com</a>
+            <!-- Navbar Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Items -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                      <!-- Search Form -->
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <!-- User Account Dropdown -->
+                    {% if request.session.name %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Welcome {{request.session.name}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item" href="#">My Orders</a></li>
+                            <li><a class="dropdown-item" href="logout/">Logout</a></li>
+                        </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </div>
+
+{% block navbar %}
+    <div class="navbar">
+  <div class="dropdown">
+    <span>Sports & Stationery</span>
+    <div class="dropdown-content">
+      <a href="#">Office Supplies</a>
+      <a href="#">Fitness Equipments</a>
+      <a href="#">Kids Toys</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <span>Electronics</span>
+    <div class="dropdown-content">
+      <a href="#">Mobile</a>
+      <a href="#">Laptops</a>
+      <a href="#"> Home Electronics</a>
+    </div>
+  </div>
+    <div class="dropdown">
+    <span>Jewelry</span>
+    <div class="dropdown-content">
+      <a href="#">Neck Jewelry</a>
+      <a href="#">Hand Jewelry</a>
+      <a href="#">Hair Accessories</a>
+    </div>
+  </div>
+    <div class="dropdown">
+    <span>Books</span>
+    <div class="dropdown-content">
+      <a href="#">Fictional</a>
+      <a href="#">Romantic Novels</a>
+      <a href="#">Historical Books</a>
+    </div>
+  </div>
+    <div class="dropdown">
+    <span>Cloth</span>
+    <div class="dropdown-content">
+      <a href="#">Men's Wear</a>
+      <a href="#">Ladies Wear</a>
+      <a href="#">Kids Wear</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <span>Beauty</span>
+    <div class="dropdown-content">
+      <a href="#">Face Cosmetics</a>
+      <a href="#">Hair Cosmetics</a>
+      <a href="#">Skin Cosmetics</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    {% endblock %}
+
+
+{%block content%}
+
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
