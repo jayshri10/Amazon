@@ -51,7 +51,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{% url 'checkout'%}" method="post">
+                    {% csrf_token %}
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Address</label>
                         <TEXTAREA type="text" class="form-control" name="address" id="exampleInputEmail1"
