@@ -5,6 +5,9 @@ from .model.register import Register
 from .model.orders import Order
 
 
+
+
+
 # Register your models here.
 admin.site.register(Product)
 admin.site.register(Categories)
